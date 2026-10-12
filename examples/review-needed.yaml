@@ -1,0 +1,16 @@
+# Analysis fixture only. Do not deploy this intentionally overprivileged setup.
+services:
+  demo:
+    image: example.invalid/demo:1.0
+    privileged: true
+    network_mode: host
+    pid: host
+    user: "0:0"
+    cap_add: [SYS_ADMIN]
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /:/host:ro
+  web:
+    image: example.invalid/web:1.0
+    ports:
+      - "8080:80"

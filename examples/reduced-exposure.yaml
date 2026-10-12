@@ -1,0 +1,10 @@
+# Analysis fixture, not a deployment recipe or a security guarantee.
+services:
+  web:
+    image: example.invalid/web:1.0
+    user: "1000:1000"
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    ports:
+      - "127.0.0.1:8080:8080"
